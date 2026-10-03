@@ -79,6 +79,7 @@ export enum DashboardRoutes {
   Racs = "/dashboard/racs",
   Posts = "/dashboard/posts",
   Calendar = "/dashboard/calendar",
+  Admin = "/dashboard/admin",
   Profile = "/dashboard/profile",
 }
 
