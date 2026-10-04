@@ -49,6 +49,13 @@ export function middleware(request: NextRequest) {
       return NextResponse.redirect(url);
     }
 
+    const adminRegex = /^(?:\/[a-z]{2})?\/dashboard\/admin(?:\/|$)/;
+    if ((userObject?.role === UserRole.AGENT || userObject?.role === UserRole.VOLUNTEER) && adminRegex.test(pathname)) {
+      const url = request.nextUrl.clone();
+      url.pathname = "/dashboard";
+      return NextResponse.redirect(url);
+    }
+
     const match = pathname.match(authorizedRoutes.AGENT.regex);
     if (match) {
       if (isAuthorized || userObject.role === UserRole.AGENT) {
