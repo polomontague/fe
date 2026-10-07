@@ -3,3 +3,8 @@ export enum ViewMode {
   CARDS = "cards",
   MAP = "map",
 }
+
+export enum TabMode {
+  DOMAINS = "domains",
+  STATISTICS = "statistics",
+}

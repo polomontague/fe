@@ -28,6 +28,7 @@ export const apiPathPerson = `/${apiPrefix}/person/`;
 export const apiPathOrganization = `/${apiPrefix}/organization/`;
 export const apiPathRequestPasswordReset = `/${apiPrefix}/auth/request-reset`;
 export const apiPathPasswordReset = `/${apiPrefix}/auth/password-reset`;
+export const apiPathTrustedDomains = `/${apiPrefix}/trusted-domain`;
 export const cloudfrontDataURL = process.env.NEXT_PUBLIC_CLOUDFRONT_DATA_URL ?? "https://cdn.need4deed.org/data";
 export const cacheTTL = 1000 * 60 * 5; // 5 minutes
 
@@ -80,6 +81,8 @@ export enum DashboardRoutes {
   Posts = "/dashboard/posts",
   Calendar = "/dashboard/calendar",
   Admin = "/dashboard/admin",
+  Domains = "/dashboard/admin/domains",
+  Statistics = "/dashboard/admin/statistics",
   Profile = "/dashboard/profile",
 }
 

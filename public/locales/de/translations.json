@@ -1769,6 +1769,21 @@
         "locationHelper": "z.B. Elsenstr., Nr. 87, 12435"
       }
     },
+    "admin": {
+      "admin": "Admin",
+      "tabs": {
+        "tab1": "Domains",
+        "tab2": "Statistiken"
+      },
+      "domains": {
+        "helper": "Personen mit einer E-Mail-Adresse dieser Domains können sich als NGO registrieren.",
+        "domain": "Domain",
+        "removeDomain": "Domain entfernen",
+        "deleteMessage": "Möchten Sie „{{domain}}“ wirklich entfernen?",
+        "delete": "Löschen",
+        "deletedSuccessfully": "Vertrauenswürdige Domain erfolgreich entfernt!"
+      }
+    },
     "newOpportunity": {
       "title": "Neue Möglichkeit",
       "subtitle": "Füllen Sie die Details aus. Sie können alles nach der Erstellung bearbeiten.",

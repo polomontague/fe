@@ -1757,6 +1757,21 @@
         "locationHelper": "e.g. Elsenstr., No. 87, 12435"
       }
     },
+    "admin": {
+      "admin": "Admin",
+      "tabs": {
+        "tab1": "Domains",
+        "tab2": "Statistics"
+      },
+      "domains": {
+        "helper": "People with an email on these domains can register as an NGO.",
+        "domain": "Domain",
+        "removeDomain": "Remove Domain",
+        "deleteMessage": "Are you sure you wish to remove \"{{domain}}\"?",
+        "delete": "Delete",
+        "deletedSuccessfully": "Trusted Domain Removed Successfully!"
+      }
+    },
     "newOpportunity": {
       "title": "New Opportunity",
       "subtitle": "Fill in the details. You can edit everything after creating it.",
