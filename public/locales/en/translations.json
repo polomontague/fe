@@ -1769,7 +1769,11 @@
         "removeDomain": "Remove Domain",
         "deleteMessage": "Are you sure you wish to remove \"{{domain}}\"?",
         "delete": "Delete",
-        "deletedSuccessfully": "Trusted Domain Removed Successfully!"
+        "deletedSuccessfully": "Trusted Domain Removed Successfully!",
+        "createdSuccessfully": "Trusted Domain Added Successfully!"
+      },
+      "statistics": {
+        "comingSoon": "Coming soon"
       }
     },
     "newOpportunity": {

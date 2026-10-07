@@ -5,15 +5,9 @@ type DomainFormValues = {
 };
 
 export const AddDomainForm = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<DomainFormValues>();
+  const { register, handleSubmit } = useForm<DomainFormValues>();
 
-  const onSubmit = (data: DomainFormValues) => {
-    console.log(data);
-  };
+  const onSubmit = () => {};
 
   return (
     <form>

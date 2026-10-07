@@ -1,6 +1,4 @@
 "use client";
-import { useGetQuery } from "@/hooks";
-import { apiPathTrustedDomains } from "@/config/constants";
 import {
   TableContainer,
   Table,

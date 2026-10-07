@@ -1781,7 +1781,11 @@
         "removeDomain": "Domain entfernen",
         "deleteMessage": "Möchten Sie „{{domain}}“ wirklich entfernen?",
         "delete": "Löschen",
-        "deletedSuccessfully": "Vertrauenswürdige Domain erfolgreich entfernt!"
+        "deletedSuccessfully": "Vertrauenswürdige Domain erfolgreich entfernt!",
+        "createdSuccessfully": "Vertrauenswürdige Domain erfolgreich hinzugefügt!"
+      },
+      "statistics": {
+        "comingSoon": "Kommt bald"
       }
     },
     "newOpportunity": {
