@@ -1,18 +1,12 @@
 {
-  "homepage": {
-    "heroSection": {
-      "menuItems": {
-        "about": "ABOUT",
-        "volunteeringOpportunities": "VOLUNTEERING OPPORTUNITIES",
-        "events": "EVENTS",
-        "openMenu": "Open menu"
-      },
-      "content": {
-        "heroText": "Voluntary support for refugees",
-        "heroSupportingText": "We connect volunteers to accommodation centers in Berlin",
-        "buttonJoinVolunteer": "Join as a volunteer",
-        "buttonJoinRefugeeCenter": "For non-profits"
-      }
+  "website": {
+    "header": {
+      "about": "About",
+      "volunteer": "Volunteer",
+      "events": "Events",
+      "login": "Login",
+      "dashboard": "Dashboard",
+      "logout": "Logout"
     },
     "footer": {
       "about": "ABOUT",
@@ -570,10 +564,10 @@
         "mostRelevantNoResults": "No results are showing. Try adjusting your availability or district on your profile to see more results"
       },
       "sidebar": {
-        "home": "Home",
+        "dashboard": "Dashboard",
         "volunteers": "Volunteers",
         "opportunities": "Opportunities",
-        "agents": "NGOs",
+        "organizations": "Organizations",
         "racs": "RAC's",
         "posts": "Posts",
         "calendar": "Calendar",

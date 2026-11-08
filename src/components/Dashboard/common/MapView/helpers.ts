@@ -1,3 +1,4 @@
+import { routes } from "@/constants/routes";
 import { defaultAvatarURL } from "@/config/constants";
 import { getImageUrl } from "@/utils";
 import { TFunction } from "i18next";
@@ -77,7 +78,7 @@ export const createOpportunityMarkers = (
 
     const childItem = {
       title: opp.title,
-      link: `/${lang}/dashboard/opportunities/${opp.id}${volunteerId ? "?volunteer=" + volunteerId : ""}`,
+      link: `${routes.opportunityDetail(lang, opp.id)}${volunteerId ? "?volunteer=" + volunteerId : ""}`,
       language: topLanguages.join(", ") + (languageOverflow > 0 ? ` +${languageOverflow}` : "") || "—",
       availability: allAvailabilities.map((a) => a).join("; "),
     };
@@ -133,7 +134,7 @@ export const createVolunteerMarkers = (
 
     const childItem = {
       title: vol.name,
-      link: `/${lang}/dashboard/volunteers/${vol.id}${opportunityId ? "?opportunity=" + opportunityId : ""}`,
+      link: `${routes.volunteerDetail(lang, vol.id)}${opportunityId ? "?opportunity=" + opportunityId : ""}`,
       language: topLanguages.join(", ") + (languageOverflow > 0 ? ` +${languageOverflow}` : "") || "—",
       availability: allAvailabilities.map((a) => a).join("; "),
       avatarUrl: getImageUrl(vol?.avatarUrl || defaultAvatarURL),
@@ -178,7 +179,7 @@ export const createAgentMarkers = (agents: ApiAgentGetList[], t: TFunction, lang
 
     const childItem = {
       title: agent.title,
-      link: `/${lang}/dashboard/agents/${agent.id}`,
+      link: routes.organizationDetail(lang, agent.id),
       district: districtTitle,
       type: typeTitle,
       agent,
@@ -217,7 +218,7 @@ export const createSingleOpportunityMarker = (
     lon: opportunityFilter.longitude,
     label: "Opportunity",
     title: opportunityFilter.name,
-    link: `/${lang}/dashboard/opportunities/${opportunityFilter.id}`,
+    link: routes.opportunityDetail(lang, opportunityFilter.id),
     language: topLanguages.join(", ") + (languageOverflow > 0 ? ` +${languageOverflow}` : "") || "—",
     availability: allAvailabilities.map((a) => a).join("; "),
     entity: EntityType.OPPORTUNITY,
@@ -242,7 +243,7 @@ export const createSingleVolunteerMarker = (
     lon: volunteerFilter.longitude,
     label: t("dashboard.map.volunteers"),
     title: volunteerFilter.name,
-    link: `/${lang}/dashboard/volunteers/${volunteerFilter.id}`,
+    link: routes.volunteerDetail(lang, volunteerFilter.id),
     language: topLanguages?.join(", ") + (languageOverflow > 0 ? ` +${languageOverflow}` : "") || "—",
     availability: allAvailabilities.map((a) => a).join("; "),
     avatarUrl: volunteerFilter.avatarUrl || getImageUrl(defaultAvatarURL),

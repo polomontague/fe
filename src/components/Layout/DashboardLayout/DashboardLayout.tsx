@@ -1,6 +1,5 @@
 import { DashboardBaseContainer, DashboardContentContainer } from "@/components/styled/container";
 import { ReactNode } from "react";
-import { PageLayout } from "../PageLayout";
 import NavigationBar from "./NavigationBar";
 
 interface Props {
@@ -8,14 +7,12 @@ interface Props {
   background?: string;
 }
 
-export function DashboardLayout({ children, background }: Props) {
+export function DashboardLayout({ children }: Props) {
   return (
-    <PageLayout background={background || "var(--color-white)"}>
-      <DashboardContentContainer>
-        <NavigationBar />
-        <DashboardBaseContainer>{children}</DashboardBaseContainer>
-      </DashboardContentContainer>
-    </PageLayout>
+    <DashboardContentContainer>
+      <NavigationBar />
+      <DashboardBaseContainer>{children}</DashboardBaseContainer>
+    </DashboardContentContainer>
   );
 }
 export default DashboardLayout;

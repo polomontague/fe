@@ -1,7 +1,6 @@
 "use client";
-
+import { routes } from "@/constants/routes";
 import { PlusIcon } from "@phosphor-icons/react";
-import { DashboardLayout } from "@/components/Layout";
 import { AgentListController } from "./AgentListController";
 import { CreateAgentDialog } from "./CreateAgentDialog/CreateAgentDialog";
 import { PendingMemberships } from "./PendingMemberships";
@@ -51,7 +50,7 @@ export const Agents = () => {
 
   const { mutate: transferMutate } = useTransferOpportunityToAgent(Number(transferOpportunityId), () => {
     setAgentToTransferTo(undefined);
-    router.push(`/${i18n.language}/dashboard/opportunities/${transferOpportunityId}`);
+    if (transferOpportunityId) router.push(routes.opportunityDetail(i18n.language, transferOpportunityId));
   });
 
   const handleTransferConfirm = () => {
@@ -112,7 +111,7 @@ export const Agents = () => {
 
   const handleCancelTransfer = () => {
     setAgentToTransferTo(undefined);
-    router.push(`/${i18n.language}/dashboard/opportunities/${transferOpportunityId}`);
+    if (transferOpportunityId) router.push(routes.opportunityDetail(i18n.language, transferOpportunityId));
   };
 
   useEffect(() => {
@@ -127,7 +126,7 @@ export const Agents = () => {
 
   const activeFilters = createSelectedAgentFiltersAsFlatArray(cardsFilter, setCardsFilter, t);
   return (
-    <DashboardLayout>
+    <>
       <AgentsContainer data-testid="agents-container">
         <CardsHeader
           header={
@@ -192,6 +191,6 @@ export const Agents = () => {
         />
       )}
       {canCreateAgent && <CreateAgentDialog isOpen={isCreateAgentOpen} onClose={() => setIsCreateAgentOpen(false)} />}
-    </DashboardLayout>
+    </>
   );
 };

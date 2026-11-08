@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
-import { DashboardLayout } from "@/components/Layout";
 import { apiPathOption, DEFAULT_MAX_COMMUTE_MINUTES, questionMark, ScreenTypes } from "@/config/constants";
 import { useGetOpportunity, useGetQuery } from "@/hooks";
 import {
@@ -36,6 +35,7 @@ import { VolunteerListController } from "./VolunteerListController";
 import { ViewMode } from "../common/types";
 import { useCurrentUser } from "@/hooks/useCurrentUser";
 import { useScreenType } from "@/context/DeviceContext";
+import { PageHeader } from "@/components/navigation/PageHeader";
 
 export function Volunteers() {
   const user = useCurrentUser(true);
@@ -176,55 +176,60 @@ export function Volunteers() {
 
   const activeFilters = createSelectedFilterItemsAsFlatArray(cardsFilter, setCardsFilter, t);
 
+  const [search, setSearch] = useState("");
+
   return (
-    <DashboardLayout>
-      <VolunteersContainer>
-        <CardsHeader
-          header={t("dashboard.volunteers.volunteers")}
-          resultCounter={numOfVols}
-          resultText={t("dashboard.home.sidebar.volunteers")}
-          tabs={tabs}
-          selectedTabIndex={selectedTabIndex}
-          setSelectedTabIndex={handleTabChange}
-          setIsFiltersOpen={setIsFiltersOpen}
-          onSearchInputChange={handleSearchInputChange}
-          searchValue={cardsFilter.search}
-          showSearch={!isAgent}
+    <VolunteersContainer>
+      <PageHeader
+        search={{
+          value: search,
+          onChange: setSearch,
+        }}
+        onAddClick={() => {}}
+      />
+      <CardsHeader
+        header={t("dashboard.volunteers.volunteers")}
+        resultCounter={numOfVols}
+        resultText={t("dashboard.home.sidebar.volunteers")}
+        tabs={tabs}
+        selectedTabIndex={selectedTabIndex}
+        setSelectedTabIndex={handleTabChange}
+        setIsFiltersOpen={setIsFiltersOpen}
+        onSearchInputChange={handleSearchInputChange}
+        searchValue={cardsFilter.search}
+        showSearch={!isAgent}
+        sortOrder={sortOrder}
+        onSortOrderChange={handleSortChange}
+        activeFilters={activeFilters}
+        onClearAllFilters={handleClearAllFilters}
+        onClearFilter={handleClearFilter}
+        entityFilter={opportunityFilter ? { ...opportunityFilter, onRemove: handleRemoveOpportunityFilter } : undefined}
+      />
+      <ContentRow>
+        <VolunteerListController
+          setNumOfVols={setNumOfVols}
           sortOrder={sortOrder}
-          onSortOrderChange={handleSortChange}
-          activeFilters={activeFilters}
-          onClearAllFilters={handleClearAllFilters}
-          onClearFilter={handleClearFilter}
-          entityFilter={
-            opportunityFilter ? { ...opportunityFilter, onRemove: handleRemoveOpportunityFilter } : undefined
+          filter={cardsFilter}
+          setFilter={handleFilterUpdate}
+          apiFilterOptions={apiFilterOptions}
+          opportunityId={opportunityId}
+          viewMode={viewMode}
+          opportunityFilter={opportunityFilter}
+        />
+        <Filters
+          isFiltersOpen={isFiltersOpen}
+          setIsFiltersOpen={setIsFiltersOpen}
+          filtersContent={
+            <FiltersContent
+              setFilter={handleFilterUpdate}
+              filter={cardsFilter}
+              viewMode={viewMode}
+              isMatchMode={!!opportunityId}
+            />
           }
         />
-        <ContentRow>
-          <VolunteerListController
-            setNumOfVols={setNumOfVols}
-            sortOrder={sortOrder}
-            filter={cardsFilter}
-            setFilter={handleFilterUpdate}
-            apiFilterOptions={apiFilterOptions}
-            opportunityId={opportunityId}
-            viewMode={viewMode}
-            opportunityFilter={opportunityFilter}
-          />
-          <Filters
-            isFiltersOpen={isFiltersOpen}
-            setIsFiltersOpen={setIsFiltersOpen}
-            filtersContent={
-              <FiltersContent
-                setFilter={handleFilterUpdate}
-                filter={cardsFilter}
-                viewMode={viewMode}
-                isMatchMode={!!opportunityId}
-              />
-            }
-          />
-        </ContentRow>
-      </VolunteersContainer>
-    </DashboardLayout>
+      </ContentRow>
+    </VolunteersContainer>
   );
 }
 

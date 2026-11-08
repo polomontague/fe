@@ -1,3 +1,4 @@
+import { routes } from "@/constants/routes";
 import { EmailNoteControl, MatchHandler } from "../shared/types";
 import { CheckCircleIcon } from "@phosphor-icons/react";
 import { Heading4 } from "@/components/styled/text";
@@ -41,7 +42,7 @@ export const AccordionVolunteer = ({
   const showBriefedCheck = isBriefedAccompanying(volunteeringType, communication);
 
   const handleGoToProfile = () => {
-    router.push(`/${i18n.language}/dashboard/volunteers/${volunteerId}`);
+    router.push(routes.volunteerDetail(i18n.language, volunteerId));
   };
 
   const resolvedAvatarUrl = getImageUrl(avatarUrl || defaultAvatarVolunteerProfile);

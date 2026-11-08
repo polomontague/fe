@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 import { Paragraph } from "@/components/styled/text";
-import { DashboardRoutes } from "@/config/constants";
+import { RouteBuilder, routes } from "@/constants/routes";
 import { useCurrentUser } from "@/hooks/useCurrentUser";
 import {
   BookOpenTextIcon,
@@ -184,7 +184,7 @@ const NavLabel = styled(Paragraph)`
 interface BarOptions {
   label: string;
   Icon?: ElementType;
-  route: DashboardRoutes;
+  route: RouteBuilder;
   text?: string;
 }
 
@@ -210,20 +210,20 @@ export default function NavigationBar() {
     : user?.firstName?.[0]?.toUpperCase() || "";
 
   const options: BarOptions[] = [
-    { label: t("dashboard.home.sidebar.home"), Icon: HouseIcon, route: DashboardRoutes.Home },
+    { label: t("dashboard.home.sidebar.home"), Icon: HouseIcon, route: routes.dashboard },
     ...(isVolunteer
       ? []
       : [
           {
             label: t("dashboard.home.sidebar.volunteers"),
             Icon: UserCheckIcon,
-            route: DashboardRoutes.Volunteers,
+            route: routes.volunteers,
           },
         ]),
     {
       label: t("dashboard.home.sidebar.opportunities"),
       Icon: ShootingStarIcon,
-      route: DashboardRoutes.Opportunities,
+      route: routes.opportunities,
     },
     ...(isVolunteer
       ? []
@@ -231,7 +231,7 @@ export default function NavigationBar() {
           {
             label: t("dashboard.home.sidebar.agents"),
             Icon: BookOpenTextIcon,
-            route: DashboardRoutes.Agents,
+            route: routes.organizations,
           },
         ]),
     ...(isVolunteer
@@ -240,7 +240,7 @@ export default function NavigationBar() {
           {
             label: t("dashboard.home.sidebar.posts"),
             Icon: NotepadIcon,
-            route: DashboardRoutes.Posts,
+            route: routes.posts,
           },
         ]),
     ...(canSeeStaffNav
@@ -248,7 +248,7 @@ export default function NavigationBar() {
           {
             label: t("dashboard.home.sidebar.calendar"),
             Icon: CalendarDotsIcon,
-            route: DashboardRoutes.Calendar,
+            route: routes.calendar,
           },
         ]
       : []),
@@ -257,27 +257,22 @@ export default function NavigationBar() {
           {
             label: t("dashboard.home.sidebar.admin"),
             Icon: ShieldCheckIcon,
-            route: DashboardRoutes.Admin,
+            route: routes.admin,
           },
         ]
       : []),
     {
       label: t("dashboard.home.sidebar.profile"),
       text: userInitials,
-      route: DashboardRoutes.Profile,
+      route: routes.profile,
     },
   ];
 
-  const coordinatorPrimaryRoutes = [
-    DashboardRoutes.Home,
-    DashboardRoutes.Volunteers,
-    DashboardRoutes.Opportunities,
-    DashboardRoutes.Posts,
-  ];
+  const coordinatorPrimaryRoutes = [routes.dashboard, routes.volunteers, routes.opportunities, routes.posts];
   const hasMoreMenu = canSeeStaffNav;
   const moreOptions = hasMoreMenu ? options.filter(({ route }) => !coordinatorPrimaryRoutes.includes(route)) : [];
   const moreIsSelected = moreOptions.some(({ route }) => {
-    const localizedRoute = `/${i18n.language}${route}`;
+    const localizedRoute = route(i18n.language);
     return currentPathname === localizedRoute || currentPathname.startsWith(`${localizedRoute}/`);
   });
   const closeMoreMenu = useCallback(() => setIsMoreOpen(false), []);
@@ -304,7 +299,7 @@ export default function NavigationBar() {
       {isMoreOpen && (
         <MoreMenu>
           {moreOptions.map(({ label, Icon, text, route }) => {
-            const localizedRoute = `/${i18n.language}${route}`;
+            const localizedRoute = route(i18n.language);
             const isSelected = currentPathname === localizedRoute || currentPathname.startsWith(`${localizedRoute}/`);
             return (
               <MoreMenuOption
@@ -326,10 +321,10 @@ export default function NavigationBar() {
       )}
       <BarContainer>
         {options.map(({ label, Icon, text, route }, index) => {
-          const localizedRoute = `/${i18n.language}${route}`;
+          const localizedRoute = route(i18n.language);
           const isSelected =
             currentPathname === localizedRoute ||
-            (route !== DashboardRoutes.Home && currentPathname.startsWith(`${localizedRoute}/`));
+            (route !== routes.dashboard && currentPathname.startsWith(`${localizedRoute}/`));
           const mobileOrder = hasMoreMenu ? coordinatorPrimaryRoutes.indexOf(route) : index;
 
           return (

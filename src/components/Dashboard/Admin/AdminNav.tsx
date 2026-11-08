@@ -1,28 +1,30 @@
 "use client";
 
-import { DashboardRoutes } from "@/config/constants";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
-
-const NAV_ITEMS = [
-  { route: DashboardRoutes.AdminDomains, labelKey: "dashboard.admin.nav.domains" },
-  { route: DashboardRoutes.AdminStatistics, labelKey: "dashboard.admin.nav.stats" },
-];
+import { routes } from "@/constants/routes";
 
 export function AdminNav() {
-  const { t, i18n } = useTranslation();
+  const {
+    t,
+    i18n: { language },
+  } = useTranslation();
   const pathname = usePathname();
+
+  const NAV_ITEMS = [
+    { route: routes.domains(language), labelKey: "dashboard.admin.nav.domains" },
+    { route: routes.statistics(language), labelKey: "dashboard.admin.nav.stats" },
+  ];
 
   return (
     <Nav aria-label={t("dashboard.admin.title")}>
       {NAV_ITEMS.map(({ route, labelKey }) => {
-        const href = `/${i18n.language}${route}`;
-        const isActive = pathname === href || pathname.startsWith(`${href}/`);
+        const isActive = pathname === route || pathname.startsWith(`${route}/`);
 
         return (
-          <NavLink key={route} href={href} aria-current={isActive ? "page" : undefined} $isActive={isActive}>
+          <NavLink key={route} href={route} aria-current={isActive ? "page" : undefined} $isActive={isActive}>
             {t(labelKey)}
           </NavLink>
         );

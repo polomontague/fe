@@ -1,6 +1,4 @@
 "use client";
-
-import { DashboardLayout } from "@/components/Layout";
 import { ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
@@ -11,15 +9,13 @@ export function AdminLayout({ children }: { children: ReactNode }) {
   const { t } = useTranslation();
 
   return (
-    <DashboardLayout>
-      <AdminContainer>
-        <HeaderContainer>
-          <HyphenatedHeading2>{t("dashboard.admin.title")}</HyphenatedHeading2>
-          <AdminNav />
-        </HeaderContainer>
-        {children}
-      </AdminContainer>
-    </DashboardLayout>
+    <AdminContainer>
+      <HeaderContainer>
+        <HyphenatedHeading2>{t("dashboard.admin.title")}</HyphenatedHeading2>
+        <AdminNav />
+      </HeaderContainer>
+      {children}
+    </AdminContainer>
   );
 }
 

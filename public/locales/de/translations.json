@@ -1,18 +1,12 @@
 {
-  "homepage": {
-    "heroSection": {
-      "menuItems": {
-        "about": "ÜBER UNS",
-        "volunteeringOpportunities": "Ehrenamtsbedarfe",
-        "events": "VERANSTALTUNGEN",
-        "openMenu": "Menü öffnen"
-      },
-      "content": {
-        "heroText": "Ehrenamtliche Unterstützung für Geflüchtete",
-        "heroSupportingText": "Wir vermitteln Ehrenamtliche an Gemeinschaftsunterkünften in Berlin",
-        "buttonJoinVolunteer": "Finde jetzt dein Ehrenamt",
-        "buttonJoinRefugeeCenter": "Für Einrichtungen"
-      }
+  "website": {
+    "header": {
+      "about": "Über",
+      "volunteer": "Ehrenamtsbedarfe",
+      "events": "Veranstaltungen",
+      "login": "Anmelden",
+      "dashboard": "Dashboard",
+      "logout": "Abmelden"
     },
     "footer": {
       "about": "ÜBER",
@@ -576,10 +570,10 @@
         "mostRelevantNoResults": "Es werden keine Ergebnisse angezeigt. Versuchen Sie, Ihre Verfügbarkeit oder Ihren Bezirk in Ihrem Profil anzupassen, um mehr Ergebnisse zu sehen."
       },
       "sidebar": {
-        "home": "Startseite",
+        "dashboard": "Dashboard",
         "volunteers": "Ehrenamtliche",
         "opportunities": "Ehrenamtsbedarfe",
-        "agents": "Einrichtungen/Projekte",
+        "organizations": "Organisationen",
         "racs": "RACs",
         "posts": "Beiträge",
         "calendar": "Kalender",
