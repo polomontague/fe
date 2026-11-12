@@ -1,0 +1,50 @@
+:root {
+  /* Colors */
+  --white: #ffffff;
+
+  /* Number in variable name stands for % of color mixed in with white */
+  --dark-blue: rgb(26, 38, 132);
+  --medium-blue: color-mix(in srgb, var(--dark-blue) 90%, white);
+  --light-blue: color-mix(in srgb, var(--dark-blue) 30%, white);
+
+  --orchid: rgb(220, 161, 232);
+  --medium-orchid: color-mix(in srgb, var(--orchid) 75%, white);
+  --light-orchid: color-mix(in srgb, var(--orchid) 40%, white);
+
+  --lavender: rgb(138, 100, 233);
+  --medium-lavender: color-mix(in srgb, var(--lavender) 80%, white);
+  --light-lavender: color-mix(in srgb, var(--lavender) 25%, white);
+
+  --coral: rgb(255, 125, 104);
+  --medium-coral: color-mix(in srgb, var(--coral) 80%, white);
+  --light-coral: color-mix(in srgb, var(--coral) 25%, white);
+
+  --mint: rgb(0, 201, 128);
+  --medium-mint: color-mix(in srgb, var(--mint) 75%, white);
+  --light-mint: color-mix(in srgb, var(--mint) 25%, white);
+
+  --raspberry: rgb(197, 15, 82);
+  --medium-raspberry: color-mix(in srgb, var(--raspberry) 80%, white);
+  --light-raspberry: color-mix(in srgb, var(--raspberry) 20%, white);
+
+  --sand: rgb(242, 226, 211);
+  --light-sand: color-mix(in srgb, var(--sand) 20%, white);
+
+  /* Text */
+  --font-size: 16px;
+  --sans-serif: "Figtree", sans-serif;
+  --bold: 600;
+
+  /* Sizes */
+  --spacing-very-small: 6px;
+  --spacing-small: 8px;
+  --spacing-medium: 16px;
+  --spacing-large: 22px;
+  --field-size: 44px;
+  --border-width: 1px;
+  --sidebar-width: 300px;
+  --header-height: 100px;
+
+  /* Miscellaneous */
+  --transition: 0.15s ease-in-out;
+}
