@@ -1,10 +1,8 @@
 "use client";
-import styled from "styled-components";
 import { useCurrentUser } from "@/hooks/useCurrentUser";
 import { useTranslation } from "react-i18next";
 import { routes } from "@/constants/routes";
-import Link from "next/link";
-import { UserMenu } from "./UserMenu";
+import { LinkButton } from "@/components/fields/LinkButton";
 
 export const AuthButton = () => {
   const {
@@ -13,20 +11,9 @@ export const AuthButton = () => {
   } = useTranslation();
   const user = useCurrentUser();
 
-  return user ? <UserMenu /> : <LoginButton href={routes.login(language)}>{t("website.header.login")}</LoginButton>;
+  return user ? (
+    <LinkButton href={routes.dashboard(language)} label={t("website.header.dashboard")} />
+  ) : (
+    <LinkButton href={routes.login(language)} label={t("website.header.login")} />
+  );
 };
-
-const LoginButton = styled(Link)`
-  display: -webkit-flex;
-  display: flex;
-  align-items: center;
-  height: 44px;
-  padding-left: 18px;
-  padding-right: 18px;
-  background-color: var(--color-midnight);
-  border-radius: 22px;
-  font-size: var(--homepage-hero-section-header-menu-item-fontSize);
-  font-weight: var(--homepage-hero-section-header-menu-item-fontWeight);
-  color: var(--color-white);
-  text-decoration: none;
-`;

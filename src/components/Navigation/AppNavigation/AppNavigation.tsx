@@ -18,8 +18,8 @@ export const AppNavigation = ({ children }: AppNavigationProps) => {
 const Frame = styled.div`
   display: -webkit-flex;
   display: flex;
-  padding-left: 270px;
-  background: var(--layout-static-page-background-default);
+  padding-left: var(--sidebar-width);
+  background: var(--light-sand);
 `;
 
 const PageContainer = styled.main`

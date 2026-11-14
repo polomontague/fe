@@ -19,9 +19,9 @@ export const WebsiteNavigation = ({ children }: WebsiteNavigationProps) => {
 };
 
 const Frame = styled.div`
-  padding-top: var(--layout-static-page-header-height);
+  padding-top: var(--header-height);
   z-index: 1;
-  background: var(--layout-static-page-background-default);
+  background: var(--light-sand);
 `;
 
 const PageContainer = styled.main``;

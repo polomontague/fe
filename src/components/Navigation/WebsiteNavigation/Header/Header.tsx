@@ -26,7 +26,7 @@ export const Header = () => {
   ];
 
   return (
-    <StyledHeader>
+    <HeaderElement>
       <NextLink href={routes.home(language)}>
         <N4DLogo />
       </NextLink>
@@ -47,24 +47,24 @@ export const Header = () => {
           <AuthButton />
         </nav>
       </ButtonFrame>
-    </StyledHeader>
+    </HeaderElement>
   );
 };
 
-const StyledHeader = styled.header`
+const HeaderElement = styled.header`
   display: -webkit-flex;
   display: flex;
   align-items: center;
-  gap: 16px;
-  height: var(--layout-static-page-header-height);
-  padding-left: 36px;
-  padding-right: 36px;
+  gap: var(--medium-spacing);
+  height: var(--header-height);
+  padding-left: var(--large-spacing);
+  padding-right: var(--large-spacing);
   position: fixed;
   left: 0;
   top: 0;
   right: 0;
   z-index: 1;
-  background-color: var(--color-orchid-subtle);
+  background-color: var(--mint);
 `;
 
 const MainNav = styled.nav`
@@ -77,7 +77,7 @@ const MainNav = styled.nav`
 const LinkList = styled.ul`
   display: -webkit-flex;
   display: flex;
-  gap: 8px;
+  gap: var(--medium-spacing);
   margin: 0;
   padding: 0;
   list-style: none;
@@ -85,19 +85,18 @@ const LinkList = styled.ul`
 `;
 
 const Link = styled(NextLink)<{ $selected: boolean }>`
-  display: -webkit-flex;
-  display: flex;
-  align-items: center;
-  height: 44px;
-  padding-left: 18px;
-  padding-right: 18px;
-  background-color: ${({ $selected }) => ($selected ? "var(--color-orchid)" : "transparent")};
-  border-radius: 22px;
-  font-size: var(--homepage-hero-section-header-menu-item-fontSize);
-  font-weight: var(--homepage-hero-section-header-menu-item-fontWeight);
-  color: var(--color-midnight);
+  font-size: var(--font-size);
+  font-weight: var(--bold);
+  color: ${({ $selected }) => ($selected ? "var(--blue) !important" : "var(--white)")};
   text-decoration: none;
+  transition: var(--short-transition);
   text-transform: uppercase;
+
+  &:hover,
+  &:active,
+  &:focus {
+    color: var(--medium-blue);
+  }
 `;
 
 const ButtonFrame = styled.div`

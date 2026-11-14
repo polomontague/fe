@@ -1,6 +1,8 @@
 "use client";
 import styled from "styled-components";
 import { PlusIcon, FadersIcon } from "@phosphor-icons/react";
+import { IconButton } from "../fields/IconButton";
+import { SearchInput } from "@/components/fields/SearchInput";
 
 type PageHeaderProps = {
   search: {
@@ -13,20 +15,9 @@ type PageHeaderProps = {
 export const PageHeader = ({ search, onAddClick }: PageHeaderProps) => {
   return (
     <Header>
-      <SearchInput
-        type="text"
-        placeholder="Search..."
-        value={search.value}
-        onChange={(evt) => search.onChange(evt.target.value)}
-      />
-      <Button>
-        <FadersIcon size={20} color="var(--color-midnight)" />
-      </Button>
-      {onAddClick && (
-        <Button onClick={() => onAddClick()}>
-          <PlusIcon size={20} color="var(--color-midnight)" />
-        </Button>
-      )}
+      <SearchInput placeholder="Search..." value={search.value} onChange={search.onChange} />
+      <IconButton Icon={FadersIcon} />
+      {onAddClick && <IconButton Icon={PlusIcon} onClick={() => onAddClick()} />}
     </Header>
   );
 };
@@ -35,38 +26,12 @@ const Header = styled.header`
   display: -webkit-flex;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--small-spacing);
   width: 100%;
-  height: 74px;
-  padding-left: 18px;
-  padding-right: 18px;
+  height: var(--header-height);
+  padding-left: var(--large-spacing);
+  padding-right: var(--large-spacing);
   position: sticky;
   top: 0;
-  background-color: var(--color-orchid);
-`;
-
-const SearchInput = styled.input`
-  flex: 1;
-  height: 44px;
-  padding-left: 18px;
-  padding-right: 18px;
-  background-color: var(--color-orchid-subtle);
-  border: none;
-  border-radius: 8px;
-  outline: none;
-  font-size: 16px;
-  color: var(--color-midnight);
-`;
-
-const Button = styled.button`
-  display: -webkit-flex;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 44px;
-  height: 44px;
-  background-color: var(--color-orchid-subtle);
-  border: none;
-  border-radius: 8px;
-  outline: none;
+  background-color: var(--mint);
 `;

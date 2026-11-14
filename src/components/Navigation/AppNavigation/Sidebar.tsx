@@ -114,7 +114,7 @@ export const Sidebar = () => {
           {items.map(({ route, Icon, label }) => (
             <li key={route}>
               <MenuItem href={route} $selected={route === pathname}>
-                {Icon ? <Icon size={24} /> : null}
+                {Icon ? <Icon /> : null}
                 {label}
               </MenuItem>
             </li>
@@ -129,16 +129,16 @@ const Background = styled.aside`
   display: -webkit-flex;
   display: flex;
   flex-direction: column;
-  width: 270px;
+  width: var(--sidebar-width);
   position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
-  background-color: var(--color-orchid-subtle);
+  background-color: var(--mint);
 `;
 
 const ContainerLogo = styled.div`
-  padding: 24px;
+  padding: var(--large-spacing);
 `;
 
 const MainNav = styled.nav`
@@ -153,6 +153,7 @@ const MainMenu = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 8px;
+  width: 100%;
   padding: 0;
   margin: 0;
   list-style: none;
@@ -162,16 +163,27 @@ const MainMenu = styled.ul`
 const MenuItem = styled(Link)<{ $selected: boolean }>`
   display: -webkit-inline-flex;
   display: inline-flex;
-  gap: 8px;
+  gap: var(--small-spacing);
   align-items: center;
-  height: 44px;
-  padding-left: 18px;
-  padding-right: 18px;
-  background-color: ${({ $selected }) => ($selected ? "var(--color-orchid)" : "transparent")};
-  border-radius: 22px;
-  font-size: var(--homepage-hero-section-header-menu-item-fontSize);
-  font-weight: var(--homepage-hero-section-header-menu-item-fontWeight);
-  color: var(--color-midnight);
+  width: 100%;
+  height: var(--field-size);
+  padding-left: var(--large-spacing);
+  padding-right: var(--large-spacing);
+  background-color: ${({ $selected }) => ($selected ? "var(--blue)" : "transparent")};
+  font-weight: var(--bold);
+  color: var(--white);
   text-decoration: none;
   text-transform: uppercase;
+
+  &:hover,
+  &active,
+  &focus {
+    background-color: var(--medium-blue);
+  }
+
+  svg {
+    width: var(--field-icon-size);
+    height: var(--field-icon-size);
+    fill: var(--white);
+  }
 `;

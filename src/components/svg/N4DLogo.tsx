@@ -33,7 +33,7 @@ export function N4DLogo() {
 
   return (
     <N4DLogoFlat
-      color="var(--color-midnight)"
+      color="var(--blue)"
       width={logoWidth}
       height={logoHeight}
       onClick={() => {

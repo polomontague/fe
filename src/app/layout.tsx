@@ -1,3 +1,5 @@
+import "./reset.css";
+import "./variables.css";
 import AxiosInitializer from "@/components/hepler/AxiosInitializer";
 import "@/config/axios";
 import { ScreenTypes } from "@/config/constants";

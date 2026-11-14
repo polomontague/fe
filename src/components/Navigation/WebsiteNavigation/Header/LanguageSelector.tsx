@@ -7,6 +7,8 @@ import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
 import { Lang } from "need4deed-sdk";
 import { useSearchParams } from "next/navigation";
+import { IconButton } from "@/components/fields/IconButton";
+import { Button } from "@/components/fields/Button";
 
 export const LanguageSelector = () => {
   const {
@@ -34,21 +36,15 @@ export const LanguageSelector = () => {
 
   return (
     <Wrapper>
-      <OpenMenuButton onClick={() => setOpen(true)}>
-        <TranslateIcon size={20} color="var(--color-white)" />
-      </OpenMenuButton>
+      <IconButton Icon={TranslateIcon} onClick={() => setOpen(true)} />
       <MenuWrapper $open={open}>
         <OverlayCloseButton onClick={() => setOpen(false)} />
         <Menu>
           <li>
-            <MenuButton $selected={language === Lang.DE} onClick={() => handleLanguageChange(Lang.DE)}>
-              Deutsch
-            </MenuButton>
+            <Button label="Deutsch" selected={language === Lang.DE} onClick={() => handleLanguageChange(Lang.DE)} />
           </li>
           <li>
-            <MenuButton $selected={language === Lang.EN} onClick={() => handleLanguageChange(Lang.EN)}>
-              English
-            </MenuButton>
+            <Button label="English" selected={language === Lang.EN} onClick={() => handleLanguageChange(Lang.EN)} />
           </li>
         </Menu>
       </MenuWrapper>
@@ -58,19 +54,6 @@ export const LanguageSelector = () => {
 
 const Wrapper = styled.div`
   position: relative;
-`;
-
-const OpenMenuButton = styled.button`
-  display: -webkit-flex;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 44px;
-  height: 44px;
-  background-color: var(--color-midnight);
-  border: none;
-  border-radius: 12px;
-  outline: none;
 `;
 
 const MenuWrapper = styled.div<{ $open: boolean }>`
@@ -96,33 +79,14 @@ const Menu = styled.ul`
   display: -webkit-flex;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: var(--small-spacing);
   position: relative;
-  padding: 8px;
+  padding: var(--medium-spacing);
   margin: 0;
-  margin-top: 8px;
+  margin-top: var(--small-spacing);
   z-index: 2;
-  background-color: var(--color-orchid);
-  border-radius: 12px;
+  background-color: var(--light-blue);
+  border-radius: var(--surface-border-radius);
   list-style: none;
   list-style-type: none;
-`;
-
-const MenuButton = styled.button<{ $selected: boolean }>`
-  display: -webkit-flex;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 44px;
-  padding-left: 18px;
-  padding-right: 18px;
-  background-color: ${({ $selected }) => ($selected ? "var(--color-midnight)" : "var(--color-orchid-subtle)")};
-  border: none;
-  border-radius: 4px;
-  outline: none;
-  font-size: var(--homepage-hero-section-header-menu-item-fontSize);
-  font-weight: var(--homepage-hero-section-header-menu-item-fontWeight);
-  color: ${({ $selected }) => ($selected ? "var(--color-white)" : "var(--color-midnight)")};
-  text-transform: uppercase;
 `;
